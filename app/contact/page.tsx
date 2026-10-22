@@ -1,0 +1,3 @@
+import { PageFrame } from "@/components/public-shell";
+import FlowForm from "@/components/flow-form";
+export default function ContactPage() { return <PageFrame><section className="contact-page"><div className="contact-head"><span className="eyebrow">COME FIND US</span><h1>Let’s make<br /><em>an entrance.</em></h1></div><div className="contact-body"><div className="contact-info"><h3>Visit the showroom</h3><p>14 Riverside Drive<br />Nairobi, Kenya</p><h3>Opening hours</h3><p>Mon – Fri · 8:30 — 17:30<br />Saturday · 9:00 — 15:00</p><h3>Talk to our team</h3><p>+254 700 000 000<br />hello@carDealermotors.co.ke</p></div><div className="contact-map"><span className="map-label">14 RIVERSIDE DRIVE · NAIROBI</span></div></div></section><FlowForm type="contact" /></PageFrame>; }

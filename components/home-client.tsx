@@ -1,0 +1,19 @@
+"use client";
+import Link from "next/link";
+import { useState } from "react";
+import { ArrowRight, ArrowUpRight, Search } from "@/components/icons";
+import { vehicles } from "@/data/vehicles";
+import { VehicleCard } from "@/components/vehicle-card";
+
+export default function HomeClient() {
+  const [search, setSearch] = useState("");
+  const featured = vehicles.slice(0, 3);
+  return <>
+    <section className="hero"><div className="hero-bg" /><div className="hero-content"><span className="eyebrow">carDealer MOTORS · EST. 1997</span><h1 className="hero-title">DRIVE<br /><em>EXTRAORDINARY.</em></h1><p className="hero-copy">Discover exceptional vehicles, carefully selected for those who expect more.</p><div className="hero-actions"><Link className="button button-primary" href="/inventory">Explore inventory <ArrowUpRight size={15} /></Link><a className="button button-ghost" href="#find">Find your vehicle <Search size={15} /></a></div><div className="hero-note"><span><i />Premium imports</span><span><i />Verified quality</span><span><i />Financing available</span></div></div><span className="hero-scroll">SCROLL TO EXPLORE ↓</span></section>
+    <section className="section section-light" id="collection"><div className="section-head"><div><span className="eyebrow">THE COLLECTION · 01</span><h2>Selected for the<br /><em>exceptional.</em></h2></div><div><p>A considered collection of premium vehicles, sourced with a discerning eye and prepared for your next chapter.</p><Link href="/inventory" className="section-link">View all vehicles <ArrowRight size={15} /></Link></div></div><div className="featured-grid"><VehicleCard vehicle={featured[0]} /><div><VehicleCard vehicle={featured[1]} /><VehicleCard vehicle={featured[2]} compact /></div></div></section>
+    <section className="manifesto section"><div><span className="eyebrow">THE carDealer STANDARD · 02</span><h2>More than<br />a <em>vehicle.</em></h2><p>From the first conversation to the moment you take the wheel, every detail is shaped around a better way to buy your next vehicle.</p><Link className="button button-ghost" href="/about">Discover our standard <ArrowRight size={15} /></Link></div><div className="manifesto-visual"><span className="manifesto-quote">“The right vehicle changes more than your journey.”</span></div></section>
+    <section className="experience-strip"><div className="experience-cell"><span className="eyebrow">01</span><h3>Curated, not crowded.</h3><p>Only the vehicles we would be proud to put our name behind.</p></div><div className="experience-cell"><span className="eyebrow">02</span><h3>Confidence included.</h3><p>Transparent provenance, verified quality and considered support.</p></div><div className="experience-cell"><span className="eyebrow">03</span><h3>Your way forward.</h3><p>Flexible finance, thoughtful trade-ins and sourcing made personal.</p></div></section>
+    <section className="section section-light" id="find"><div className="section-head"><div><span className="eyebrow">FIND YOUR NEXT · 03</span><h2>Start with a<br /><em>feeling.</em></h2></div><p>Tell us what you are looking for and we will help you find the right expression of it.</p></div><div className="finder-bar"><Search size={18} /><input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search by make, model or reference" /><Link href={`/inventory${search ? `?q=${encodeURIComponent(search)}` : ""}`} className="button button-primary">Browse collection <ArrowRight size={15} /></Link></div>{search && <p className="finder-result">Showing the collection for “{search}”</p>}</section>
+    <section className="home-cta"><span className="eyebrow">THE NEXT MOVE</span><h2>Ready to meet<br /><em>your next vehicle?</em></h2><Link href="/contact" className="button button-primary">Begin a conversation <ArrowUpRight size={15} /></Link></section>
+  </>;
+}
